@@ -1,4 +1,5 @@
 import React from "react";
+import { fetchWeatherData } from "./WeatherApiProvider";
 
 export default class Weather extends React.Component {
 
@@ -28,13 +29,6 @@ export default class Weather extends React.Component {
 
   componentDidMount() {
     const { lat, lng } = this.props;
-    this.fetchWeatherData(lat, lng)
-  }
-
-  async fetchWeatherData(lat, lng) {
-    const resp = await fetch(`https://api.weatherbit.io/v2.0/current?key=${process.env.API_KEY}&lat=${lat}&lon=${lng}`);
-    const data = await resp.json();
-
-    this.setState({ data: data })
+    fetchWeatherData(lat, lng).then(resp => this.setState({ data: resp }));
   }
 }

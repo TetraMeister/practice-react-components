@@ -55,7 +55,7 @@ class Article extends React.Component {
         ev.preventDefault();
         const { content } = this.state;
 
-        if (content !== 'Your comment here') {
+        if (content !== 'Your comment here' || content !== "") {
             this.addComment(content);
             this.setState({
                 content: 'Your comment here'

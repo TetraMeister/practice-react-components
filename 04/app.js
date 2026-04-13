@@ -101,7 +101,7 @@ class App extends React.Component {
 
     filterUser(name) {
         return this.state.users.filter(user =>
-            user.includes(name)
+            user.toLowerCase().includes(name.toLowerCase())
         )
     }
 }
